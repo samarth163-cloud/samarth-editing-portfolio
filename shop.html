@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Samarth haveliwala</title>
+    <link rel="icon" type="image/png" href="shop_favicon.png">
+    <meta name="description" content="Shop premium editing presets, templates, and resources from Samarth haveliwala.">
+    <style>
+        /* edit.css */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F5F5F7;
+            /* Apple-style cool gray */
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --accent-black: #000000;
+            --accent-white: #FFFFFF;
+            --border-light: #EAEAEA;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom White Scrollbar with Depth */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 245, 1) 100%);
+            border-radius: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            background-clip: padding-box;
+            box-shadow: inset 2px 2px 5px rgb(100, 100, 100), inset -2px -2px 5px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 235, 1) 100%);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(-45deg, #ffe2e2, #f0e6ff, #e6f9ff, #fff0e6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            position: absolute;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-contact {
+            background-color: var(--accent-black);
+            color: var(--accent-white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-contact:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E2E2E5;
+            transform: scale(1.03);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-links .btn-contact {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-links .btn-contact:hover {
+            transform: translateY(-50%) scale(1.03);
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Shop Page Content */
+        .shop-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .shop-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+
+        .shop-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Shop Content Placeholder */
+        .shop-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem;
+            text-align: center;
+        }
+
+        .shop-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+            }
+
+            .logo {
+                position: static;
+            }
+
+            .hamburger {
+                display: block;
+                position: static;
+            }
+
+            .header-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.8rem;
+                padding-top: 1rem;
+                order: 3;
+            }
+
+            .header-links.active {
+                display: flex;
+            }
+
+            .header-links .btn-contact {
+                position: static;
+                transform: none;
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            .header-links .btn-contact:hover {
+                transform: scale(1.03);
+            }
+
+            .shop-hero {
+                padding-top: 8rem;
+            }
+
+            .shop-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .shop-hero p {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="12.jpg" alt="Samarth Logo">
+            <span>Samarth haveliwala</span>
+        </a>
+        <nav class="header-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#work" class="nav-link">View My Work</a>
+            <a href="shop.html" class="nav-link">Shop now</a>
+            <a href="" class="nav-link">about</a>
+            <a href="https://x.com/jatineditorr" class="btn-contact">Contact Me</a>
+        </nav>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+    <!-- Shop Hero -->
+    <section class="shop-hero">
+        <h1>Shop</h1>
+        <p>Premium presets, templates, and resources to level up your editing workflow.</p>
+    </section>
+    <!-- Shop Content -->
+    <section class="shop-content">
+        <p>Coming soon — stay tuned for exclusive drops!</p>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const headerLinks = document.querySelector('.header-links');
+
+        if (hamburger && headerLinks) {
+            hamburger.addEventListener('click', () => {
+                headerLinks.classList.toggle('active');
+
+                // Toggle icon between bars and times (close)
+                const icon = hamburger.querySelector('i');
+                if (headerLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

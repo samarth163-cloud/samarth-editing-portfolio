@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarth haveliwala</title>
+    <link rel="icon" type="image/jpeg" href="12.jpg">
+    <meta name="description"
+        content="Design and prototype your website effortlessly with our modern template – fast, responsive, and perfect for agencies, startups, and creative professionals.">
+    <style>
+        /* edit.css */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F5F5F7;
+            /* Apple-style cool gray */
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --accent-black: #000000;
+            --accent-white: #FFFFFF;
+            --border-light: #EAEAEA;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom White Scrollbar with Depth */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 245, 1) 100%);
+            border-radius: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            background-clip: padding-box;
+            box-shadow: inset 2px 2px 5px rgb(100, 100, 100), inset -2px -2px 5px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 235, 1) 100%);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(-45deg, #ffe2e2, #f0e6ff, #e6f9ff, #fff0e6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            position: absolute;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-contact {
+            background-color: var(--accent-black);
+            color: var(--accent-white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-contact:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E2E2E5;
+            transform: scale(1.03);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-links .btn-contact {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-links .btn-contact:hover {
+            transform: translateY(-50%) scale(1.03);
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge-new {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            position: relative;
+        }
+
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: #10b981;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite ease-out;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn-contact,
+        .hero .btn-secondary {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 3rem 0;
+            background-color: transparent;
+            display: flex;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-container::before,
+        .marquee-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 25s linear infinite;
+            gap: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            align-items: center;
+            column-gap: 1rem;
+            min-width: 250px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .marquee-item img {
+            grid-row: 1 / span 2;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-light);
+        }
+
+        .marquee-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .marquee-item .name {
+            grid-column: 2;
+            grid-row: 1;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 0;
+            align-self: end;
+        }
+
+        .marquee-item .subs {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            align-self: start;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Showreel */
+        .showreel {
+            padding: 6rem 2rem;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .showreel h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .showreel p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .showreel .subtext {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .software-logo {
+            width: 1.8rem;
+            height: 1.8rem;
+            vertical-align: middle;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            background-color: #d0d0d0;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            group: video;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .mute-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .video-container:hover .mute-button {
+            transform: scale(1.1);
+        }
+
+        .mute-button i {
+            color: var(--accent-black);
+            font-size: 0.9rem;
+        }
+
+        /* How I Work */
+        .how-i-work {
+            padding: 8rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .how-i-work h2 {
+            font-size: 3rem;
+            margin-bottom: 5rem;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--border-light);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            color: var(--text-light);
+        }
+
+        .step-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        /* Software */
+        .software {
+            padding: 7rem 2rem;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .software h2 {
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .software p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.35rem;
+            line-height: 1.8;
+        }
+
+        .software-logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .software-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+        }
+
+        .software-item span {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 6rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonial-cards {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0 2rem 0;
+            scrollbar-width: none;
+        }
+
+        .testimonial-cards::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 340px;
+            scroll-snap-align: center;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 250, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: left;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.03);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+            color: #f5a623;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #333;
+            letter-spacing: -0.01em;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 1.2rem;
+        }
+
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info cite {
+            font-style: normal;
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial {
+                padding: 3rem 1rem;
+            }
+
+            .testimonial h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .testimonial-cards {
+                flex-direction: column;
+                align-items: center;
+                overflow-x: visible;
+                scroll-snap-type: none;
+                padding: 0.5rem 0;
+            }
+
+            .testimonial-card {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 360px;
+                padding: 2rem 1.5rem;
+            }
+
+            .testimonial-card blockquote {
+                font-size: 0.95rem;
+            }
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            background-color: transparent;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-pic {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #ccc;
+            object-fit: cover;
+            border: 2px solid var(--border-light);
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links span {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-icon:hover {
+            background-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        /* Made in Framer Badge */
+        .framer-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: transform 0.2s ease;
+            z-index: 1000;
+        }
+
+        .framer-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .framer-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+            }
+
+            .logo {
+                position: static;
+            }
+
+            .hamburger {
+                display: block;
+                position: static;
+            }
+
+            .header-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.8rem;
+                padding-top: 1rem;
+                order: 3;
+            }
+
+            .header-links.active {
+                display: flex;
+            }
+
+            .header-links .btn-contact {
+                position: static;
+                transform: none;
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            .header-links .btn-contact:hover {
+                transform: scale(1.03);
+            }
+
+            .hero {
+                padding-top: 11rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+            }
+
+            .hero .btn-contact,
+            .hero .btn-secondary {
+                display: block;
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .showreel h2 {
+                font-size: 2.2rem;
+            }
+
+            .how-i-work h2 {
+                font-size: 2.2rem;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .step-number {
+                font-size: 4rem;
+            }
+
+            .testimonial-card blockquote {
+                font-size: 0.95rem;
+            }
+
+            .software-item img {
+                width: 50px;
+                height: 56px;
+            }
+
+            .software-item span {
+                font-size: 0.9rem;
+            }
+
+            .software p {
+                font-size: 1.15rem;
+                line-height: 1.7;
+                padding: 0 1rem;
+            }
+
+            footer {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 3rem 1rem;
+                gap: 2rem;
+            }
+
+            .footer-left {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .social-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .social-links span {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                width: 100%;
+                display: block;
+            }
+        }
+
+        /* Work Video Carousel */
+        #work {
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        #work h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .video-carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 5vw 2rem 5vw;
+            max-width: 1400px;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+
+        .video-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .video-carousel video {
+            flex: 0 0 auto;
+            width: 280px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            scroll-snap-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            background: #000;
+        }
+
+        .video-carousel video:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .video-carousel video {
+                width: 240px;
+                height: 426px;
+            }
+        }
+
+        /* Carousel Arrows */
+        .carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .carousel-btn:hover {
+            background: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .prev-btn {
+            left: -10px;
+        }
+
+        .next-btn {
+            right: -10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-btn {
+                display: none;
+            }
+
+            .carousel-container {
+                padding: 0;
+            }
+        }
+
+        /* Carousel Indicators (Dots) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dot.active {
+            background: #000;
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* LUT Promo Section styling */
+        .lut-promo {
+            padding: 7rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lut-promo-container {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            padding: 3.5rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lut-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .lut-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .lut-content h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .lut-tagline {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .lut-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+        }
+
+        .lut-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2.2rem;
+            width: 100%;
+        }
+
+        .lut-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .lut-features li i {
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        .lut-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lut-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.8rem !important;
+            font-weight: 600 !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .lut-btn i {
+            transition: transform 0.2s ease;
+        }
+
+        .lut-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .lut-release {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lut-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .lut-mockup-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 320px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lut-mockup-wrapper:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .lut-mockup-img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .lut-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, rgba(138, 43, 226, 0.15) 50%, rgba(255, 255, 255, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(20px);
+        }
+
+        /* Responsive LUT section */
+        @media (max-width: 900px) {
+            .lut-promo-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 2.5rem;
+            }
+
+            .lut-visual {
+                order: -1;
+            }
+
+            .lut-content h2 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .lut-promo {
+                padding: 5rem 1rem;
+            }
+
+            .lut-promo-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .lut-cta-group {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 1rem;
+            }
+
+            .lut-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .lut-release {
+                text-align: center;
+            }
+        }
+
+        /* Custom YouTube Showcase Grid */
+        .youtube-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3.5rem auto 1rem auto;
+            width: 100%;
+            padding: 0 1.5rem;
+        }
+
+        .youtube-player-wrapper {
+            width: 100%;
+        }
+
+        .youtube-video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .youtube-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: 1;
+        }
+
+        /* Thumbnail Overlay */
+        .yt-thumbnail-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .yt-thumbnail-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .yt-thumbnail-overlay:hover .yt-thumbnail-img {
+            transform: scale(1.03);
+        }
+
+        .yt-play-btn-wrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .yt-play-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            font-size: 1.5rem;
+            padding-left: 5px;
+            /* Centers play icon */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .yt-thumbnail-overlay:hover .yt-play-btn-wrapper {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .yt-thumbnail-overlay:hover .yt-play-btn {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Controls Overlay (Only visible on playing & hovering or when forced active) */
+        .yt-controls-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .youtube-video-container:hover .yt-controls-overlay.active,
+        .yt-controls-overlay.active.visible-forced {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .yt-control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .yt-control-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            border-color: #fff;
+            transform: scale(1.08);
+        }
+
+        .yt-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .youtube-showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2.5rem auto 1rem auto;
+                padding: 0 1rem;
+            }
+
+            .youtube-video-container {
+                border-radius: 16px;
+            }
+
+            .yt-play-btn-wrapper {
+                width: 64px;
+                height: 64px;
+            }
+
+            .yt-play-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .yt-control-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+
+            .yt-controls-overlay {
+                top: 12px;
+                bottom: auto;
+                right: 12px;
+                gap: 8px;
+            }
+
+            .yt-controls-overlay.active {
+                opacity: 1;
+                /* Keep controls visible when playing on mobile since hover doesn't exist */
+                visibility: visible;
+            }
+        }
+    </style>
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="12.jpg" alt="Samarth Logo">
+            <span>Samarth haveliwala</span>
+        </a>
+        <nav class="header-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#work" class="nav-link">View My Work</a>
+            <a href="shop.html" class="nav-link">Shop now</a>
+            <a href="" class="nav-link">about</a>
+            <a href="https://x.com/jatineditorr" class="btn-contact">Contact Me</a>
+        </nav>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge-new"><span class="live-dot"></span> Revolutionize your design workflow</div>
+        <h1>Edits that elevate <br> real-life storytelling</h1>
+        <p>Turning ordinary footage into viral-ready content with clean cuts, sound design, and motion.</p>
+        <div class="hero-buttons">
+            <a href="#work" class="btn-secondary">View My Work</a>
+            <a href="https://x.com/jatineditorr" class="btn-contact">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Marquee Ticker -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <!-- Items -->
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_mTFodUWf4JhsVrWJM_iDtx8tmXUy6VTsFJx901_foJ8g=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Sunny Bhavsar</span>
+                <span class="subs">4.13 lakh subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/4vUrzkkKysCt11dHCOAPcCYEiCYIXsmyLwutvna6pdpero--kuBiNUDgnki6W1XhRW8ydeLGaA=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">ZeeFam</span>
+                <span class="subs">1 lakh Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/02_tYR9IIzhPL7KOHet7GjIvl0Csq4HyFzsRdJskn0moc93igmHQ9I838a4hW-WdV7OUxq14iw=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Familia Diamond</span>
+                <span class="subs">12M Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/bU3UiPgTPL4hfpXF2xF2dWzGwzUDEiYEoX9RFzMe3q4zma8jRVp6t9uvUSAPRI6Pef0WUg55hgk=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Agnit Shorts</span>
+                <span class="subs">10.7M Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/POCHCqZLrOkjvVMTw25Zk9-y7ciFfnoPSEXvekLKKFFq2Hd4RQkL1Dh94p7CTCwF98SoZ4qD=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Shailesh Patel</span>
+                <span class="subs">25k Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.ggpht.com/RnZF3BPv9lA79XxwTZe1_pNvEGNvs0YfXCxeIqcfOle1LGy-G-znQhD4srSHw-S0oxrYuuqG1w=s108-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Samarth Haveliwala</span>
+                <span class="subs">50 Subscribers</span>
+            </div>
+            <!-- Duplicate for infinite scrolling -->
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_mTFodUWf4JhsVrWJM_iDtx8tmXUy6VTsFJx901_foJ8g=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Sunny Bhavsar</span>
+                <span class="subs">4.13 lakh subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/4vUrzkkKysCt11dHCOAPcCYEiCYIXsmyLwutvna6pdpero--kuBiNUDgnki6W1XhRW8ydeLGaA=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">ZeeFam</span>
+                <span class="subs">1 lakh Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/02_tYR9IIzhPL7KOHet7GjIvl0Csq4HyFzsRdJskn0moc93igmHQ9I838a4hW-WdV7OUxq14iw=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Familia Diamond</span>
+                <span class="subs">12M Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/bU3UiPgTPL4hfpXF2xF2dWzGwzUDEiYEoX9RFzMe3q4zma8jRVp6t9uvUSAPRI6Pef0WUg55hgk=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Agnit Shorts</span>
+                <span class="subs">10.7M Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.googleusercontent.com/POCHCqZLrOkjvVMTw25Zk9-y7ciFfnoPSEXvekLKKFFq2Hd4RQkL1Dh94p7CTCwF98SoZ4qD=s160-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Shailesh Patel</span>
+                <span class="subs">25k Subscribers</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://yt3.ggpht.com/RnZF3BPv9lA79XxwTZe1_pNvEGNvs0YfXCxeIqcfOle1LGy-G-znQhD4srSHw-S0oxrYuuqG1w=s108-c-k-c0x00ffffff-no-rj"
+                    alt="">
+                <span class="name">Samarth Haveliwala</span>
+                <span class="subs">50 Subscribers</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Showreel Section -->
+    <section class="showreel">
+        <h2>SHOWREEL</h2>
+        <p>IRL storytelling that keeps viewers watching.</p>
+        <div class="subtext">
+            edited on
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg"
+                alt="Premiere Pro" class="software-logo">
+            premiere and
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg"
+                alt="After Effects" class="software-logo">
+            after effects
+        </div>
+        <div class="video-container">
+            <video class="video-thumbnail" src="123.mp4" autoplay loop muted playsinline></video>
+            <div class="mute-button">
+                <i class="fas fa-volume-mute"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Work -->
+    <section class="how-i-work">
+        <h2>How I will work on your project</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Start Your Project</h3>
+                    <p>I begin by importing your footage into the timeline, removing unwanted parts, and carefully
+                        arranging everything to build a clear and engaging story.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Edit the Video</h3>
+                    <p>I first select the right background music, then craft the visuals with clean cuts and smooth
+                        pacing, followed by sound effects and motion. Finally, I refine the edit with detailed revisions
+                        to ensure everything feels perfect.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Export & Deliver</h3>
+                    <p>I export the final video in high quality and deliver it before the deadline—ready to post and
+                        perform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Softwares Section -->
+    <section class="software">
+        <h2>Softwares I use</h2>
+        <div class="software-logos-row">
+            <div class="software-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg"
+                    alt="Premiere Pro">
+                <span>Premiere Pro</span>
+            </div>
+            <div class="software-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg"
+                    alt="After Effects">
+                <span>After Effects</span>
+            </div>
+            <div class="software-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                <span>ChatGPT</span>
+            </div>
+            <div class="software-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+                    alt="Photoshop">
+                <span>Photoshop</span>
+            </div>
+            <div class="software-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg"
+                    alt="DaVinci Resolve">
+                <span>DaVinci Resolve</span>
+            </div>
+        </div>
+
+        <p>I use Adobe Premiere Pro for precise editing and storytelling, After Effects to craft high-impact visuals,
+            and AI tools like ChatGPT to enhance flow, generate ideas, and streamline the creative process—ensuring
+            every edit feels smooth, engaging, and polished.</p>
+    </section>
+
+
+    <!-- My Work / Portfolio -->
+    <section id="work">
+        <h2>My Work</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="video-carousel">
+                <video src="v3.mp4" autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQNnftk_uaCR8nnn2bjBwhnbNh0DaMqpnqwAyBfMRPwgRnURPA8EvRn81Xw_PSrZzwi_awzwN1YYbpZa6u1YCevxcI5aocBdFh3QGZQ.mp4?_nc_cat=109&_nc_oc=AdocVeOKgbu5MHJqu3MnkTXCBhZ_9qz0c7YjQ7pLvpm3is8gL8QUsFwnkbVxIRY0-Os&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=Ku1Z-6AoAgwQ7kNvwGRyyT8&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjE3NzkyMDQ1NjQ3MjUxNCwiYXNzZXRfYWdlX2RheXMiOjIsInZpX3VzZWNhc2VfaWQiOjEwODI3LCJkdXJhdGlvbl9zIjo1OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=17b750b9785b020f&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83QjQwRTRGODYyQzBBNERCNkRCREEwM0U0Q0E5MjhBRV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzFDNEZBQUUwODgxMzdENEQyOUQ4NDEyMjlBRDU2RkFBX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaE38Hy07PeBxUCKAJDMywXQE2lP3ztkWgYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZZapAQA&_nc_gid=HK_4bgEoKLagqp4c0MN18A&_nc_ss=7a22e&_nc_zt=28&oh=00_Af7KCGApAWcHhKDIPCxmL602DfGYS6PboNAgu6Y6DFaysA&oe=6A0FDB7E"
+                    autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQOWs3y2NvEEURlnqFM-vjdiCG1WgMi2rXdpTGmxRf5pEPMNa0dwBopAUwOaH_9mKMcur-zyzAgr_DeLsy1DZe_UPaQvRJ0uHy4qVZ0.mp4?_nc_cat=107&_nc_oc=Ados06rMnyuyk-QkyChsGcPNpZqexzm-1CkTt75pbfYx2QRfEvbh7FJmeILQwVFGMmc&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=7YXtg2Bw0MAQ7kNvwEbpShX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTcwOTMyNzI3MzM5MzMwNywiYXNzZXRfYWdlX2RheXMiOjgsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo0MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=a17781353d8de839&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9DNzREMzM5Qjg2RkY3QkUyMjExREU2MTY1N0NEN0Q4QV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzFDNEE5NDk5RTk1MDYyMDM5MDAzNjJERDFFNjlCREIzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa28vvO-KeJBhUCKAJDMywXQEVzMzMzMzMYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=CVxvKjWwK4iTMWGLlii_3w&_nc_zt=28&_nc_ss=7a22e&oh=00_Af7fZYPqkJHBF3Zg1EoMkUzgZTdVZfoC0IUNf7TDC67gBQ&oe=6A0FC57C"
+                    autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQP0bXHHvbrV0-Kil-WxokOJdVtC6IEMv0av8mnqey6xe1D2SENx1iIv05zvdqmqG2VDToolTmBsHJl1fNPqdlQMWLa6Lm5H3d5hanA.mp4?_nc_cat=110&_nc_oc=Adpoy6lJUFRMYtDKgTJpqfDAkxuTWi92f4NFPokbWmbM6Yz_7ZLWQvE0yifn7d5r_ww&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=3qmepytfZrEQ7kNvwEbM2JZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTMyNTY5MjUzOTcwMzg4MiwiYXNzZXRfYWdlX2RheXMiOjQsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo1MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=2bcbf99ef27fc553&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9CRTQ2RDI2NUNBNjY4MkQ4Qzg3Qjg0QUE3MjQwMjlCQl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzIyNEZBM0EyOEVBMTMzNzRERTRDN0Y2MjdGOThGQUJCX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaUyciOu-3aBBUCKAJDMywXQEoqn752yLQYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=o_k-7CYgoQygEq-TVvBWAA&_nc_ss=7a22e&_nc_zt=28&oh=00_Af4MZye0_YT_rmMM_lN0Jx0Im_mV_sk7ZHBZSnsrGhYAHw&oe=6A0FCD03"
+                    autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQNdoNxZ8bZFShtfIpVbOIwTuoB0cKpxT0aqx99aPV-JLcK167Qq0fva7WfmWr4-YF6cK7sfbmo9JQvmk_4H5qvRt19KRsHj0YiFJJE.mp4?_nc_cat=101&_nc_oc=Adr17zOw_EYepPwc6pWnb8jJx3oR_xwR5NVGUx3_Z-dt8F8aFoIWutAL8t1loRHOVOQ&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=ZGfPadADWygQ7kNvwHbt2Zs&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc4NzUzMTk2MzE0ODI1OTUsImFzc2V0X2FnZV9kYXlzIjoxMDgsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjo1MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=5a74dca824cf681e&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9EOTQ1QzJEMTk1MDhFNzdGMUZEREE2Q0VGN0RGMzhBMF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0U1NEQzNDM0NzZCODEyNDIxQjhGOUMzMThFMUNDRkEyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbGu4zOxeDAPxUCKAJDMywXQEmmZmZmZmYYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=VPc-sei0h1ULNYJ_EqluqA&_nc_zt=28&_nc_ss=7a22e&oh=00_Af6Tt0aV0mUUmQqwNWAuVKhdmPedtWyU6Boo1KsyYzS-tA&oe=6A0FE39A"
+                    autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQNa9q8vKnqiph4MMxC7qlb0AovyTpld6IxNtux3NISTXczG9VoikGkAicZ6R9t3Ysd8Bgrbg1JNxuoLS0hktsOoBWnE6Z3GAEw7Czs.mp4?_nc_cat=109&_nc_oc=AdrDJdoKoxv7qFHApLjGYanzf26RXtVXwIkoR0bOQAIflF45xxx-jr5aspRLdUC4UNA&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=qA3ZleU7vdUQ7kNvwFB_TAA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MzQwODY2MDI3OTMxNzczOSwiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjoxNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=b007cc4d4c194682&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC81RTRCRDE2MjQwRDVDMjU2MUE1ODE4Q0EzM0U5M0FCNV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzM1NDQyNzIwMUNENTBDNjBGQzJFRjNENjdEODVFODgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbW096RkoqODBUCKAJDMywXQDCAAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=f7y9NVv9CindZMrhIvx_3g&_nc_zt=28&_nc_ss=7a22e&oh=00_Af4Vpl6EDujcBB_eZxnf9CqIWdjaPJeGt_kcoddUE8reSA&oe=6A0FE296"
+                    autoplay loop muted playsinline></video>
+                <video
+                    src="https://instagram.fstv1-1.fna.fbcdn.net/o1/v/t2/f2/m86/AQNzorRBUsIUEi7hssLlJF_rZS-KVFS6wBlt_dvx1LbsyweYPchusBdqHUgU3JotKR_BFpVvcPWBGNCPhrVm2c0zXE1e-KHsOdzcT3s.mp4?_nc_cat=110&_nc_oc=AdrAzc2F2C79-E90oM3xiKzVZLeHfFsjeapnyHjWAXvvnvu21Q6WnKobolqFWuO9nQc&_nc_sid=5e9851&_nc_ht=instagram.fstv1-1.fna.fbcdn.net&_nc_ohc=_h1h3D8JH4MQ7kNvwGwklwX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5NDcxODA2MjMxNzQzNjEsImFzc2V0X2FnZV9kYXlzIjoyMywidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjQ0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=251c65b2a9c0479c&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9EODQ0OTQyRUExNkFGNUExMUMzOTc2NDA3MjY4MUZBRV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzZFNDM1QURDQjg3QzgwNjQ5RTExMDBEQ0QzNEQ4NjlDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACay65zcs7fhPxUCKAJDMywXQEYu2RaHKwIYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=LMg8ug0IDs7gbLl8hOvN0Q&_nc_zt=28&_nc_ss=7a22e&oh=00_Af5hDS6tIzY06faXHnspgK6syYdclJykqhGdwiqwAGTMYQ&oe=6A0FCA17"
+                    autoplay loop muted playsinline></video>
+
+            </div>
+            <button class="carousel-btn next-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <!-- Carousel dots -->
+        <div class="carousel-indicators">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- Custom Responsive YouTube Player Showcase Grid -->
+        <div class="youtube-showcase-grid">
+            <!-- Showreel Video 1 -->
+            <div class="youtube-player-wrapper">
+                <div class="youtube-video-container" id="youtubeVideoContainer1">
+                    <!-- YouTube Player Placeholder -->
+                    <div id="yt-player-placeholder-1"></div>
+
+                    <!-- Custom Glassmorphic Thumbnail Overlay -->
+                    <div class="yt-thumbnail-overlay" id="ytThumbnailOverlay1">
+                        <img src="https://img.youtube.com/vi/XYh2J4RURds/maxresdefault.jpg"
+                            alt="Cinematic Showreel Thumbnail 1" class="yt-thumbnail-img">
+                        <div class="yt-play-btn-wrapper">
+                            <div class="yt-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Showreel Video 2 -->
+            <div class="youtube-player-wrapper">
+                <div class="youtube-video-container" id="youtubeVideoContainer2">
+                    <!-- YouTube Player Placeholder -->
+                    <div id="yt-player-placeholder-2"></div>
+
+                    <!-- Custom Glassmorphic Thumbnail Overlay -->
+                    <div class="yt-thumbnail-overlay" id="ytThumbnailOverlay2">
+                        <img src="https://img.youtube.com/vi/6qEphIdSPdE/maxresdefault.jpg"
+                            alt="Cinematic Showreel Thumbnail 2" class="yt-thumbnail-img">
+                        <div class="yt-play-btn-wrapper">
+                            <div class="yt-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+    <!-- LUT Pack Promo Section -->
+    <section class="lut-promo">
+        <div class="lut-promo-container">
+            <div class="lut-content">
+                <div class="lut-badge"><i class="fas fa-sparkles"></i> COMING SOON</div>
+                <h2>Cinematic LUT Pack v1.0</h2>
+                <p class="lut-tagline">Color grade your videos like a professional in one click.</p>
+                <p class="lut-description">
+                    Get access to the signature color profiles I use in my viral videos.
+                    Optimized to transform raw footage into premium, cinematic storytelling with rich skin tones, deep
+                    contrast, and seamless color harmony.
+                </p>
+                <ul class="lut-features">
+                    <li><i class="fas fa-check-circle"></i> 10+ Signature Cinematic LUTs</li>
+                    <li><i class="fas fa-check-circle"></i> Optimized for Premiere Pro, After Effects, & DaVinci</li>
+                    <li><i class="fas fa-check-circle"></i> Perfect for Sony S-Log, Canon C-Log, & Rec.709</li>
+                    <li><i class="fas fa-check-circle"></i> Lifetime Updates & Color Grading Guide</li>
+                </ul>
+                <div class="lut-cta-group">
+                    <a href="shop.html" class="btn-contact lut-btn">Shop now <i class="fas fa-arrow-right"></i></a>
+
+                </div>
+            </div>
+            <div class="lut-visual">
+                <div class="lut-mockup-wrapper">
+                    <img src="lut_mockup.png" alt="Samarth LUT Pack Mockup" class="lut-mockup-img">
+                    <div class="lut-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <h2>Loved by creators & editors</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote>"He knows the value of pacing. Visual game is clean and amazing. Highly recommended."
+                </blockquote>
+                <div class="testimonial-author">
+                    <img src="https://yt3.googleusercontent.com/bU3UiPgTPL4hfpXF2xF2dWzGwzUDEiYEoX9RFzMe3q4zma8jRVp6t9uvUSAPRI6Pef0WUg55hgk=s160-c-k-c0x00ffffff-no-rj"
+                        alt="Agnit">
+                    <div class="testimonial-author-info">
+                        <cite>Agnit Shorts</cite>
+                        <span>10.7M Subscribers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote>"Edits were clean, delivered fast, and the vibe was exactly what I wanted. Will work again
+                    for sure."</blockquote>
+                <div class="testimonial-author">
+                    <img src="https://yt3.googleusercontent.com/ytc/AIdro_mTFodUWf4JhsVrWJM_iDtx8tmXUy6VTsFJx901_foJ8g=s160-c-k-c0x00ffffff-no-rj"
+                        alt="Sunny">
+                    <div class="testimonial-author-info">
+                        <cite>Sunny Bhavsar</cite>
+                        <span>4.13L Subscribers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <blockquote>"Understands storytelling. My retention went up after his edits. Absolute gem to work with."
+                </blockquote>
+                <div class="testimonial-author">
+                    <img src="https://yt3.googleusercontent.com/02_tYR9IIzhPL7KOHet7GjIvl0Csq4HyFzsRdJskn0moc93igmHQ9I838a4hW-WdV7OUxq14iw=s160-c-k-c0x00ffffff-no-rj"
+                        alt="Rebal D">
+                    <div class="testimonial-author-info">
+                        <cite>Familia Diamond</cite>
+                        <span>12M Subscribers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-left">
+            <img src="12.jpg" alt="Profile" class="profile-pic">
+            <div class="social-links">
+                <span>Follow us on:</span>
+                <a href="https://x.com/jatineditorr" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/cutx.sam/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- Add script for navbar blur effect on scroll -->
+    <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.7)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        const video = document.querySelector('.video-thumbnail');
+        const muteBtn = document.querySelector('.mute-button');
+
+        if (muteBtn && video) {
+            const muteIcon = muteBtn.querySelector('i');
+            muteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent clicking through to anything else
+                if (video.muted) {
+                    video.muted = false;
+                    muteIcon.classList.remove('fa-volume-mute');
+                    muteIcon.classList.add('fa-volume-up');
+                } else {
+                    video.muted = true;
+                    muteIcon.classList.remove('fa-volume-up');
+                    muteIcon.classList.add('fa-volume-mute');
+                }
+            });
+        }
+
+        const hamburger = document.querySelector('.hamburger');
+        const headerLinks = document.querySelector('.header-links');
+
+        if (hamburger && headerLinks) {
+            hamburger.addEventListener('click', () => {
+                headerLinks.classList.toggle('active');
+
+                // Toggle icon between bars and times (close)
+                const icon = hamburger.querySelector('i');
+                if (headerLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Carousel Navigation Logic
+        const carousel = document.querySelector('.video-carousel');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dots = document.querySelectorAll('.dot');
+
+        if (carousel && prevBtn && nextBtn && dots.length > 0) {
+            const getActiveIndex = () => {
+                const carouselRect = carousel.getBoundingClientRect();
+                const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+                let minDistance = Infinity;
+                let activeIndex = 0;
+
+                const videoElements = carousel.querySelectorAll('video');
+                videoElements.forEach((videoEl, index) => {
+                    const rect = videoEl.getBoundingClientRect();
+                    const videoCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(carouselCenter - videoCenter);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        activeIndex = index;
+                    }
+                });
+                return activeIndex;
+            };
+
+            const updateDots = () => {
+                const activeIndex = getActiveIndex();
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === activeIndex);
+                });
+            };
+
+            const scrollToIndex = (index) => {
+                const videoElements = carousel.querySelectorAll('video');
+                if (index >= 0 && index < videoElements.length) {
+                    const targetVideo = videoElements[index];
+                    const targetScroll = targetVideo.offsetLeft - (carousel.offsetWidth - targetVideo.offsetWidth) / 2;
+                    carousel.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            prevBtn.addEventListener('click', () => {
+                const activeIndex = getActiveIndex();
+                scrollToIndex(activeIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const activeIndex = getActiveIndex();
+                scrollToIndex(activeIndex + 1);
+            });
+
+            carousel.addEventListener('scroll', updateDots);
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    scrollToIndex(i);
+                });
+            });
+
+            // Initial call to ensure active dot is correct
+            updateDots();
+        }
+
+        // --- Custom YouTube Player API Logic ---
+        window.ytApiReady = false;
+        window.ytInitQueue = [];
+
+        // Load YouTube API script dynamically
+        if (!window.YT) {
+            const ytTag = document.createElement('script');
+            ytTag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(ytTag, firstScriptTag);
+        } else {
+            window.ytApiReady = true;
+        }
+
+        // YouTube Iframe Player callback
+        window.onYouTubeIframeAPIReady = function () {
+            window.ytApiReady = true;
+            while (window.ytInitQueue.length > 0) {
+                const initFunc = window.ytInitQueue.shift();
+                initFunc();
+            }
+        };
+
+        class CustomYoutubePlayer {
+            constructor(containerId, videoId, index) {
+                this.containerId = containerId;
+                this.videoId = videoId;
+                this.index = index;
+                this.player = null;
+                this.controlsTimeout = null;
+                this.playRequested = false;
+
+                this.container = document.getElementById(containerId);
+                this.thumbnailOverlay = document.getElementById(`ytThumbnailOverlay${index}`);
+                this.controlsOverlay = document.getElementById(`ytControlsOverlay${index}`);
+                this.playPauseBtn = document.getElementById(`ytPlayPauseBtn${index}`);
+                this.muteUnmuteBtn = document.getElementById(`ytMuteUnmuteBtn${index}`);
+
+                this.initEvents();
+            }
+
+            initEvents() {
+                if (this.thumbnailOverlay) {
+                    this.thumbnailOverlay.addEventListener('click', () => {
+                        this.playRequested = true;
+
+                        // Show a loading state inside the play button
+                        const playIcon = this.thumbnailOverlay.querySelector('.yt-play-btn i');
+                        if (playIcon) {
+                            playIcon.className = 'fas fa-spinner fa-spin';
+                        }
+
+                        if (window.ytApiReady) {
+                            this.initPlayer();
+                        } else {
+                            window.ytInitQueue.push(() => this.initPlayer());
+                        }
+                    });
+                }
+
+                if (this.container) {
+                    this.container.addEventListener('click', (e) => {
+                        // If click is on controls or thumbnail overlay, skip toggle behavior
+                        if (e.target.closest('.yt-control-btn') || e.target.closest('.yt-thumbnail-overlay')) {
+                            return;
+                        }
+
+                        if (this.player && this.controlsOverlay && this.controlsOverlay.classList.contains('active')) {
+                            if (this.controlsOverlay.classList.contains('visible-forced')) {
+                                this.hideControls();
+                            } else {
+                                this.showControls();
+                            }
+                        }
+                    });
+                }
+
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (this.player) {
+                            const state = this.player.getPlayerState();
+                            if (state === YT.PlayerState.PLAYING) {
+                                this.player.pauseVideo();
+                            } else {
+                                this.player.playVideo();
+                            }
+                        }
+                    });
+                }
+
+                if (this.muteUnmuteBtn) {
+                    this.muteUnmuteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (this.player) {
+                            if (this.player.isMuted()) {
+                                this.player.unMute();
+                            } else {
+                                this.player.mute();
+                            }
+                            this.updateMuteIcon();
+                            this.showControlsTemporarily();
+                        }
+                    });
+                }
+            }
+
+            initPlayer() {
+                if (this.player) return;
+
+                // Stop other players if they are currently playing
+                CustomYoutubePlayer.pauseAllExcept(this);
+
+                this.player = new YT.Player(`yt-player-placeholder-${this.index}`, {
+                    height: '100%',
+                    width: '100%',
+                    videoId: this.videoId,
+                    playerVars: {
+                        'autoplay': 1,
+                        'controls': 1, // Enable native seek & progress controls
+                        'modestbranding': 1,
+                        'rel': 0,
+                        'showinfo': 0,
+                        'iv_load_policy': 3,
+                        'playsinline': 1,
+                        'mute': 0 // Play unmuted on user click
+                    },
+                    events: {
+                        'onReady': (e) => this.onPlayerReady(e),
+                        'onStateChange': (e) => this.onPlayerStateChange(e)
+                    }
+                });
+
+                // Smoothly fade out thumbnail overlay
+                if (this.thumbnailOverlay) {
+                    this.thumbnailOverlay.style.opacity = '0';
+                    this.thumbnailOverlay.style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        this.thumbnailOverlay.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            onPlayerReady(event) {
+                if (this.controlsOverlay) {
+                    this.controlsOverlay.classList.add('active');
+                    this.showControlsTemporarily();
+                }
+                this.updateMuteIcon();
+            }
+
+            onPlayerStateChange(event) {
+                if (event.data === YT.PlayerState.ENDED) {
+                    this.resetPlayer();
+                } else if (event.data === YT.PlayerState.PLAYING) {
+                    // Pause other players to avoid overlapping sounds
+                    CustomYoutubePlayer.pauseAllExcept(this);
+
+                    if (this.playPauseBtn) {
+                        this.playPauseBtn.querySelector('i').className = 'fas fa-pause';
+                    }
+                    this.showControlsTemporarily();
+                } else if (event.data === YT.PlayerState.PAUSED) {
+                    if (this.playPauseBtn) {
+                        this.playPauseBtn.querySelector('i').className = 'fas fa-play';
+                    }
+                    this.showControlsTemporarily();
+                }
+            }
+
+            showControls() {
+                if (this.controlsOverlay) {
+                    this.controlsOverlay.classList.add('visible-forced');
+                }
+                clearTimeout(this.controlsTimeout);
+                this.controlsTimeout = setTimeout(() => this.hideControls(), 3000);
+            }
+
+            showControlsTemporarily() {
+                this.showControls();
+            }
+
+            hideControls() {
+                if (this.controlsOverlay && this.player && this.player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    this.controlsOverlay.classList.remove('visible-forced');
+                }
+            }
+
+            updateMuteIcon() {
+                if (this.player && this.muteUnmuteBtn) {
+                    const muteIcon = this.muteUnmuteBtn.querySelector('i');
+                    if (this.player.isMuted()) {
+                        muteIcon.className = 'fas fa-volume-mute';
+                    } else {
+                        muteIcon.className = 'fas fa-volume-up';
+                    }
+                }
+            }
+
+            resetPlayer() {
+                clearTimeout(this.controlsTimeout);
+                if (this.controlsOverlay) {
+                    this.controlsOverlay.classList.remove('active', 'visible-forced');
+                }
+
+                if (this.thumbnailOverlay) {
+                    this.thumbnailOverlay.style.display = 'flex';
+                    const playIcon = this.thumbnailOverlay.querySelector('.yt-play-btn i');
+                    if (playIcon) {
+                        playIcon.className = 'fas fa-play';
+                    }
+                    setTimeout(() => {
+                        this.thumbnailOverlay.style.opacity = '1';
+                        this.thumbnailOverlay.style.pointerEvents = 'auto';
+                    }, 50);
+                }
+
+                if (this.player) {
+                    this.player.destroy();
+                    this.player = null;
+                }
+                this.playRequested = false;
+
+                // Recreate the placeholder div inside the container
+                if (this.container) {
+                    const newPlaceholder = document.createElement('div');
+                    newPlaceholder.id = `yt-player-placeholder-${this.index}`;
+                    this.container.insertBefore(newPlaceholder, this.controlsOverlay);
+                }
+            }
+
+            static pauseAllExcept(currentPlayer) {
+                CustomYoutubePlayer.instances.forEach(instance => {
+                    if (instance !== currentPlayer && instance.player && typeof instance.player.pauseVideo === 'function') {
+                        try {
+                            const state = instance.player.getPlayerState();
+                            if (state === YT.PlayerState.PLAYING) {
+                                instance.player.pauseVideo();
+                            }
+                        } catch (e) {
+                            console.warn("Could not pause player instance:", e);
+                        }
+                    }
+                });
+            }
+        }
+
+        CustomYoutubePlayer.instances = [];
+
+        // Initialize players
+        document.addEventListener('DOMContentLoaded', () => {
+            CustomYoutubePlayer.instances.push(
+                new CustomYoutubePlayer('youtubeVideoContainer1', 'XYh2J4RURds', 1),
+                new CustomYoutubePlayer('youtubeVideoContainer2', '6qEphIdSPdE', 2)
+            );
+        });
+    </script>
+</body>
+
+</html>
