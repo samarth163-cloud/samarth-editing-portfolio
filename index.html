@@ -449,7 +449,7 @@
             position: relative;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
             cursor: pointer;
-        
+
         }
 
         .video-container video {
@@ -991,7 +991,7 @@
             gap: 1.5rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding: 1rem 5vw 2rem 5vw;
+            padding: 1rem calc(50% - 140px) 2rem calc(50% - 140px);
             max-width: 1400px;
             margin: 0 auto;
             scrollbar-width: none;
@@ -1018,6 +1018,11 @@
         }
 
         @media (max-width: 768px) {
+            .video-carousel {
+                padding-left: calc(50% - 120px);
+                padding-right: calc(50% - 120px);
+            }
+
             .video-carousel video {
                 width: 240px;
                 height: 426px;
@@ -1635,8 +1640,8 @@
         </div>
         <div class="video-container">
             <video class="video-thumbnail"
-                src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_720/v1779471520/123_kl05ga.mp4" loop muted
-                playsinline></video>
+                src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_720/v1779471520/123_kl05ga.mp4"
+                loop muted playsinline></video>
             <div class="mute-button">
                 <i class="fas fa-volume-mute"></i>
             </div>
@@ -1717,11 +1722,21 @@
         <div class="carousel-container">
             <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
             <div class="video-carousel">
-                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779471734/v3_gkl2b4.mp4" loop muted playsinline preload="none"></video>
-                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472063/v1_bnwcph.mp4" loop muted playsinline preload="none"></video>
-                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472154/v10_2_d4kdaj.mp4" loop muted playsinline preload="none"></video>
-                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472468/v5_wfhycb.mp4" loop muted playsinline preload="none"></video>
-                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472138/v7_1_mg5yvw.mp4" loop muted playsinline preload="none"></video>
+                <video
+                    data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779471734/v3_gkl2b4.mp4"
+                    loop muted playsinline preload="none"></video>
+                <video
+                    data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472063/v1_bnwcph.mp4"
+                    loop muted playsinline preload="none"></video>
+                <video
+                    data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472154/v10_2_d4kdaj.mp4"
+                    loop muted playsinline preload="none"></video>
+                <video
+                    data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472468/v5_wfhycb.mp4"
+                    loop muted playsinline preload="none"></video>
+                <video
+                    data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472138/v7_1_mg5yvw.mp4"
+                    loop muted playsinline preload="none"></video>
 
             </div>
             <button class="carousel-btn next-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
@@ -1919,7 +1934,7 @@
         const setupVideoPerformance = () => {
             const showreelVideo = document.querySelector('.video-thumbnail');
             const carouselVideos = document.querySelectorAll('.video-carousel video');
-            
+
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const videoEl = entry.target;
@@ -2007,7 +2022,7 @@
                 const currentScroll = carousel.scrollLeft;
                 let minDistance = Infinity;
                 let activeIndex = 0;
-                
+
                 for (let i = 0; i < videoElements.length; i++) {
                     const targetScroll = getTargetScroll(i);
                     const distance = Math.abs(currentScroll - targetScroll);
@@ -2029,15 +2044,15 @@
                 if (index >= 0 && index < videoElements.length) {
                     isScrollingProgrammatically = true;
                     clearTimeout(scrollTimeout);
-                    
+
                     const targetScroll = getTargetScroll(index);
                     carousel.scrollTo({
                         left: targetScroll,
                         behavior: 'smooth'
                     });
-                    
+
                     updateDots(index);
-                    
+
                     // Reset flag after smooth scroll animation completes
                     scrollTimeout = setTimeout(() => {
                         isScrollingProgrammatically = false;
@@ -2048,7 +2063,7 @@
             prevBtn.addEventListener('click', () => {
                 const currentScroll = carousel.scrollLeft;
                 let prevIndex = currentSlideIndex;
-                
+
                 // Find the last index whose target scroll is backward
                 for (let i = videoElements.length - 1; i >= 0; i--) {
                     if (getTargetScroll(i) < currentScroll - 10) {
@@ -2056,12 +2071,12 @@
                         break;
                     }
                 }
-                
+
                 // Fallback: decrement if stuck
                 if (prevIndex === currentSlideIndex && currentSlideIndex > 0) {
                     prevIndex = currentSlideIndex - 1;
                 }
-                
+
                 currentSlideIndex = prevIndex;
                 scrollToIndex(currentSlideIndex);
             });
@@ -2069,7 +2084,7 @@
             nextBtn.addEventListener('click', () => {
                 const currentScroll = carousel.scrollLeft;
                 let nextIndex = currentSlideIndex;
-                
+
                 // Find the first index whose target scroll is forward
                 for (let i = 0; i < videoElements.length; i++) {
                     if (getTargetScroll(i) > currentScroll + 10) {
@@ -2077,12 +2092,12 @@
                         break;
                     }
                 }
-                
+
                 // Fallback: increment if stuck
                 if (nextIndex === currentSlideIndex && currentSlideIndex < videoElements.length - 1) {
                     nextIndex = currentSlideIndex + 1;
                 }
-                
+
                 currentSlideIndex = nextIndex;
                 scrollToIndex(currentSlideIndex);
             });
