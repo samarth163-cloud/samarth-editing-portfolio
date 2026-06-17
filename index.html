@@ -449,7 +449,7 @@
             position: relative;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
             cursor: pointer;
-            group: video;
+        
         }
 
         .video-container video {
@@ -1634,7 +1634,9 @@
             after effects
         </div>
         <div class="video-container">
-            <video class="video-thumbnail" src="https://res.cloudinary.com/dn9612xou/video/upload/q_auto/f_auto/v1781715674/a1_xytm48.mp4" autoplay loop muted playsinline></video>
+            <video class="video-thumbnail"
+                src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_720/v1779471520/123_kl05ga.mp4" loop muted
+                playsinline></video>
             <div class="mute-button">
                 <i class="fas fa-volume-mute"></i>
             </div>
@@ -1715,17 +1717,11 @@
         <div class="carousel-container">
             <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
             <div class="video-carousel">
-                <video src="https://res.cloudinary.com/dn9612xou/video/upload/v1779471734/v3_gkl2b4.mp4" autoplay loop
-                    muted playsinline></video>
-                <video src="https://res.cloudinary.com/dn9612xou/video/upload/v1779472063/v1_bnwcph.mp4" autoplay loop
-                    muted playsinline></video>
-                <video src="https://res.cloudinary.com/dn9612xou/video/upload/v1779472154/v10_2_d4kdaj.mp4" autoplay
-                    loop muted playsinline></video>
-                <video src="https://res.cloudinary.com/dn9612xou/video/upload/v1779472468/v5_wfhycb.mp4" autoplay loop muted playsinline></video>
-                <video src="" autoplay loop muted playsinline></video>
-                <video src="https://res.cloudinary.com/dn9612xou/video/upload/v1779472138/v7_1_mg5yvw.mp4" autoplay loop
-                    muted playsinline></video>
-                <video src="" autoplay loop muted playsinline></video>
+                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779471734/v3_gkl2b4.mp4" loop muted playsinline preload="none"></video>
+                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472063/v1_bnwcph.mp4" loop muted playsinline preload="none"></video>
+                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472154/v10_2_d4kdaj.mp4" loop muted playsinline preload="none"></video>
+                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472468/v5_wfhycb.mp4" loop muted playsinline preload="none"></video>
+                <video data-src="https://res.cloudinary.com/dn9612xou/video/upload/f_auto,q_auto,w_360/v1779472138/v7_1_mg5yvw.mp4" loop muted playsinline preload="none"></video>
 
             </div>
             <button class="carousel-btn next-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
@@ -1733,8 +1729,6 @@
         <!-- Carousel dots -->
         <div class="carousel-indicators">
             <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
@@ -1905,13 +1899,6 @@
         const video = document.querySelector('.video-thumbnail');
         const muteBtn = document.querySelector('.mute-button');
 
-        if (video) {
-            // Attempt to autoplay explicitly to bypass browser restrictions
-            video.play().catch(error => {
-                console.log("Autoplay prevented or video not ready yet:", error);
-            });
-        }
-
         if (muteBtn && video) {
             const muteIcon = muteBtn.querySelector('i');
             muteBtn.addEventListener('click', (e) => {
@@ -1926,6 +1913,55 @@
                     muteIcon.classList.add('fa-volume-mute');
                 }
             });
+        }
+
+        // Lazy Loading and Smart Autoplay/Pause Observer
+        const setupVideoPerformance = () => {
+            const showreelVideo = document.querySelector('.video-thumbnail');
+            const carouselVideos = document.querySelectorAll('.video-carousel video');
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const videoEl = entry.target;
+                    if (entry.isIntersecting) {
+                        // Lazy load source if using data-src
+                        if (!videoEl.src && videoEl.dataset.src) {
+                            videoEl.src = videoEl.dataset.src;
+                            videoEl.load();
+                        }
+                        // Play the video
+                        videoEl.play().catch(error => {
+                            console.log("Autoplay prevented:", error);
+                        });
+                    } else {
+                        // Pause the video to save CPU/GPU resources
+                        if (!videoEl.paused) {
+                            videoEl.pause();
+                        }
+                    }
+                });
+            }, {
+                root: null, // Viewport
+                rootMargin: '100px', // Preload/start playing slightly before coming into view
+                threshold: 0.1
+            });
+
+            // Observe showreel video
+            if (showreelVideo) {
+                videoObserver.observe(showreelVideo);
+            }
+
+            // Observe all carousel videos
+            carouselVideos.forEach(v => {
+                videoObserver.observe(v);
+            });
+        };
+
+        // Initialize video optimization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupVideoPerformance);
+        } else {
+            setupVideoPerformance();
         }
 
         const hamburger = document.querySelector('.hamburger');
@@ -1954,65 +1990,120 @@
         const dots = document.querySelectorAll('.dot');
 
         if (carousel && prevBtn && nextBtn && dots.length > 0) {
-            const getActiveIndex = () => {
-                const carouselRect = carousel.getBoundingClientRect();
-                const carouselCenter = carouselRect.left + carouselRect.width / 2;
+            let currentSlideIndex = 0;
+            let isScrollingProgrammatically = false;
+            let scrollTimeout = null;
+            const videoElements = carousel.querySelectorAll('video');
 
+            const getTargetScroll = (index) => {
+                if (index < 0 || index >= videoElements.length) return 0;
+                const targetVideo = videoElements[index];
+                const targetScroll = targetVideo.offsetLeft - (carousel.offsetWidth - targetVideo.offsetWidth) / 2;
+                const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+                return Math.max(0, Math.min(targetScroll, maxScrollLeft));
+            };
+
+            const getActiveIndex = () => {
+                const currentScroll = carousel.scrollLeft;
                 let minDistance = Infinity;
                 let activeIndex = 0;
-
-                const videoElements = carousel.querySelectorAll('video');
-                videoElements.forEach((videoEl, index) => {
-                    const rect = videoEl.getBoundingClientRect();
-                    const videoCenter = rect.left + rect.width / 2;
-                    const distance = Math.abs(carouselCenter - videoCenter);
+                
+                for (let i = 0; i < videoElements.length; i++) {
+                    const targetScroll = getTargetScroll(i);
+                    const distance = Math.abs(currentScroll - targetScroll);
                     if (distance < minDistance) {
                         minDistance = distance;
-                        activeIndex = index;
+                        activeIndex = i;
                     }
-                });
+                }
                 return activeIndex;
             };
 
-            const updateDots = () => {
-                const activeIndex = getActiveIndex();
+            const updateDots = (index) => {
                 dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === activeIndex);
+                    dot.classList.toggle('active', i === index);
                 });
             };
 
             const scrollToIndex = (index) => {
-                const videoElements = carousel.querySelectorAll('video');
                 if (index >= 0 && index < videoElements.length) {
-                    const targetVideo = videoElements[index];
-                    const targetScroll = targetVideo.offsetLeft - (carousel.offsetWidth - targetVideo.offsetWidth) / 2;
+                    isScrollingProgrammatically = true;
+                    clearTimeout(scrollTimeout);
+                    
+                    const targetScroll = getTargetScroll(index);
                     carousel.scrollTo({
                         left: targetScroll,
                         behavior: 'smooth'
                     });
+                    
+                    updateDots(index);
+                    
+                    // Reset flag after smooth scroll animation completes
+                    scrollTimeout = setTimeout(() => {
+                        isScrollingProgrammatically = false;
+                    }, 800);
                 }
             };
 
             prevBtn.addEventListener('click', () => {
-                const activeIndex = getActiveIndex();
-                scrollToIndex(activeIndex - 1);
+                const currentScroll = carousel.scrollLeft;
+                let prevIndex = currentSlideIndex;
+                
+                // Find the last index whose target scroll is backward
+                for (let i = videoElements.length - 1; i >= 0; i--) {
+                    if (getTargetScroll(i) < currentScroll - 10) {
+                        prevIndex = i;
+                        break;
+                    }
+                }
+                
+                // Fallback: decrement if stuck
+                if (prevIndex === currentSlideIndex && currentSlideIndex > 0) {
+                    prevIndex = currentSlideIndex - 1;
+                }
+                
+                currentSlideIndex = prevIndex;
+                scrollToIndex(currentSlideIndex);
             });
 
             nextBtn.addEventListener('click', () => {
-                const activeIndex = getActiveIndex();
-                scrollToIndex(activeIndex + 1);
+                const currentScroll = carousel.scrollLeft;
+                let nextIndex = currentSlideIndex;
+                
+                // Find the first index whose target scroll is forward
+                for (let i = 0; i < videoElements.length; i++) {
+                    if (getTargetScroll(i) > currentScroll + 10) {
+                        nextIndex = i;
+                        break;
+                    }
+                }
+                
+                // Fallback: increment if stuck
+                if (nextIndex === currentSlideIndex && currentSlideIndex < videoElements.length - 1) {
+                    nextIndex = currentSlideIndex + 1;
+                }
+                
+                currentSlideIndex = nextIndex;
+                scrollToIndex(currentSlideIndex);
             });
 
-            carousel.addEventListener('scroll', updateDots);
+            carousel.addEventListener('scroll', () => {
+                if (!isScrollingProgrammatically) {
+                    currentSlideIndex = getActiveIndex();
+                    updateDots(currentSlideIndex);
+                }
+            });
 
             dots.forEach((dot, i) => {
                 dot.addEventListener('click', () => {
+                    currentSlideIndex = i;
                     scrollToIndex(i);
                 });
             });
 
             // Initial call to ensure active dot is correct
-            updateDots();
+            currentSlideIndex = getActiveIndex();
+            updateDots(currentSlideIndex);
         }
 
         // --- Custom YouTube Player API Logic ---
